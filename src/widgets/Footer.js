@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <Navbar fixed="bottom" bg="light">
       <Container>
-        <span className="text-muted">Подвал сайта</span>
+        <span className="text-muted">Админ Панель</span>
       </Container>
     </Navbar>
   );

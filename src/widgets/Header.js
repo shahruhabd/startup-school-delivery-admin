@@ -5,13 +5,13 @@ const Header = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Logo</Navbar.Brand>
+        <Navbar.Brand href="/">Развозка</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Главная</Nav.Link>
-            <Nav.Link href="#link">Ссылка</Nav.Link>
-            {/* Добавьте дополнительные ссылки по мере необходимости */}
+            <Nav.Link href="/students/">Ученики</Nav.Link>
+            <Nav.Link href="/drivers/">Водители</Nav.Link>
+            <Nav.Link href="/parents/">Родители</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

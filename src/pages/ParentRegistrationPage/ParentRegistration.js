@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Убедитесь, что Bootstrap подключен
 
 const ParentRegistration = () => {
   const [username, setUsername] = useState('');
@@ -27,7 +28,7 @@ const ParentRegistration = () => {
       if (response.ok) {
         return response.json();
       }
-      return response.text().then(text => { throw new Error(text) });
+      throw new Error('Ошибка регистрации');
     })
     .then(data => {
       setSuccess(true);
@@ -35,7 +36,6 @@ const ParentRegistration = () => {
       setPassword('');
       setPhoneNumber('');
       setChildId('');
-      // Вывести сообщение об успехе или выполнить дальнейшие действия
     })
     .catch(error => {
       setError('Ошибка при регистрации: ' + error.message);
@@ -43,49 +43,54 @@ const ParentRegistration = () => {
   };
 
   return (
-    <div>
-      {success && <div>Регистрация прошла успешно!</div>}
-      {error && <div>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Имя пользователя:
+    <>
+      <h1 className="my-2">Родители</h1>
+      {success && <div className="alert alert-success">Регистрация прошла успешно!</div>}
+      {error && <div className="alert alert-danger">{error}</div>}
+      <form onSubmit={handleSubmit} className="card p-4">
+        <div className="form-group mb-3">
+          <label>Имя пользователя:</label>
           <input
             type="text"
+            className="form-control"
             value={username}
             onChange={e => setUsername(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Пароль:
+        </div>
+        <div className="form-group mb-3">
+          <label>Пароль:</label>
           <input
             type="password"
+            className="form-control"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Номер телефона:
+        </div>
+        <div className="form-group mb-3">
+          <label>Номер телефона:</label>
           <input
             type="tel"
+            className="form-control"
             value={phoneNumber}
             onChange={e => setPhoneNumber(e.target.value)}
             required
           />
-        </label>
-        <label>
-          ID ребенка:
+        </div>
+        <div className="form-group mb-3">
+          <label>ID ребенка:</label>
           <input
             type="text"
+            className="form-control"
             value={childId}
             onChange={e => setChildId(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Зарегистрировать</button>
+        </div>
+        <button type="submit" className="btn btn-primary">Зарегистрировать</button>
       </form>
-    </div>
+    </>
   );
 };
 
